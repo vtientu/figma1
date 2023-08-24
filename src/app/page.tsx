@@ -373,7 +373,7 @@ export default function Home() {
           >
             Các chức năng
           </Typography>
-          <Box display={"flex"} flexWrap={"wrap"} mx={6}>
+          <Box display={"flex"} flexWrap={"wrap"} mx={6} maxWidth={"2440px"}>
             {functions.map((func, index) => (
               <Box
                 key={index}
@@ -413,7 +413,7 @@ export default function Home() {
             gap={4}
             alignItems={"stretch"}
             pb={5}
-            maxWidth={"1440px"}
+            maxWidth={"2440px"}
           >
             {news.map((n, index) => (
               <Box
@@ -492,7 +492,7 @@ export default function Home() {
             gap={4}
             alignItems={"stretch"}
             pb={5}
-            maxWidth={"1440px"}
+            maxWidth={"2440px"}
           >
             {media.map((n, index) => (
               <Box
