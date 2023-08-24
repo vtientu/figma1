@@ -253,12 +253,12 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box display={"flex"} alignContent={"stretch"} minWidth={screen.height}>
+      <Box display={"flex"} alignContent={"stretch"} minWidth={"100vh"}>
         <Box
           display={"flex"}
           flexDirection={"column"}
           bgcolor={theme.palette.primary.main}
-          minHeight={screen.height}
+          minHeight={"100vh"}
         >
           {pages.map((page, index) => (
             <ButtonGroup
@@ -373,7 +373,7 @@ export default function Home() {
           >
             Các chức năng
           </Typography>
-          <Box display={"flex"} flexWrap={"wrap"} mx={6} maxWidth={"2440px"}>
+          <Box display={"flex"} flexWrap={"wrap"} mx={6} maxWidth={"1800px"}>
             {functions.map((func, index) => (
               <Box
                 key={index}
@@ -413,7 +413,7 @@ export default function Home() {
             gap={4}
             alignItems={"stretch"}
             pb={5}
-            maxWidth={"2440px"}
+            maxWidth={"1800px"}
           >
             {news.map((n, index) => (
               <Box
@@ -492,7 +492,7 @@ export default function Home() {
             gap={4}
             alignItems={"stretch"}
             pb={5}
-            maxWidth={"2440px"}
+            maxWidth={"1800px"}
           >
             {media.map((n, index) => (
               <Box
