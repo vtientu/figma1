@@ -290,6 +290,7 @@ export default function Home() {
                 alignItems={"center"}
                 justifyContent={"center"}
                 color="#fff"
+                height={open ? 80 : 60}
                 sx={{ transition: "all 0.4s ease-in-out", p: 2 }}
                 bgcolor={
                   path === page.url ? theme.palette.primary.dark : "inherit"
@@ -300,7 +301,7 @@ export default function Home() {
                   mt={1}
                   display={open ? "block" : "none"}
                   sx={{
-                    transition: "all 0.4s ease-in-out",
+                    transition: "all 0.4s ease",
                   }}
                 >
                   {page.name}
