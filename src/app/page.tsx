@@ -61,25 +61,25 @@ export default function Home() {
     {
       name: "Trò chuyện",
       url: "/1",
-      icon: "./Group 1151.svg",
+      icon: "/Group 1151.png",
       active: false,
     },
     {
       name: "Thông báo",
       url: "/2",
-      icon: "./Group 1443.svg",
+      icon: "/Group 1443.png",
       active: false,
     },
     {
       name: "Danh bạ",
       url: "/3",
-      icon: "./Group 1146.svg",
+      icon: "/Group 1146.png",
       active: false,
     },
     {
       name: "Thống kê",
       url: "/4",
-      icon: "./Group 1448.svg",
+      icon: "/Group 1448.png",
       active: false,
     },
     {
@@ -267,14 +267,14 @@ export default function Home() {
           flexDirection={"column"}
           bgcolor={theme.palette.primary.main}
           minHeight={"100vh"}
-          sx={{ transition: "all 0.3s ease-in-out" }}
+          sx={{ transition: "all 0.4s ease-in-out" }}
           width={open ? 150 : 80}
         >
           <ButtonGroup
             orientation="vertical"
             aria-label="vertical outlined button group"
           >
-            <Button sx={{ p: 3 }}>
+            <Button sx={open ? { p: 2.3 } : { p: 1.3 }}>
               <Image
                 src={open ? "./Group 27571.svg" : "./Vector.svg"}
                 alt="logo"
@@ -287,16 +287,22 @@ export default function Home() {
                 display={"flex"}
                 flexDirection={"column"}
                 key={index}
-                sx={{ p: 3 }}
                 alignItems={"center"}
                 justifyContent={"center"}
                 color="#fff"
+                sx={{ transition: "all 0.4s ease-in-out", p: 2 }}
                 bgcolor={
                   path === page.url ? theme.palette.primary.dark : "inherit"
                 }
               >
                 <Image src={page.icon} alt={page.name} width={36} height={36} />
-                <Typography mt={1} display={open ? "block" : "none"}>
+                <Typography
+                  mt={1}
+                  display={open ? "block" : "none"}
+                  sx={{
+                    transition: "all 0.4s ease-in-out",
+                  }}
+                >
                   {page.name}
                 </Typography>
               </Box>
@@ -322,7 +328,7 @@ export default function Home() {
               <Typography
                 variant="h6"
                 fontSize={21}
-                fontWeight={500}
+                fontWeight={600}
                 component="div"
                 sx={{ flexGrow: 1, textTransform: "uppercase" }}
                 color={theme.palette.primary.main}
@@ -410,7 +416,7 @@ export default function Home() {
             ml={3}
             color={theme.palette.text.secondary}
             fontSize={19}
-            fontWeight={500}
+            fontWeight={600}
           >
             Các chức năng
           </Typography>
@@ -452,7 +458,7 @@ export default function Home() {
             ml={3}
             color={theme.palette.text.secondary}
             fontSize={19}
-            fontWeight={500}
+            fontWeight={600}
           >
             Tin tức sự kiện
           </Typography>
@@ -531,7 +537,7 @@ export default function Home() {
             ml={3}
             color={theme.palette.text.secondary}
             fontSize={19}
-            fontWeight={500}
+            fontWeight={600}
           >
             Media Box
           </Typography>
