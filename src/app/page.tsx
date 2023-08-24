@@ -274,7 +274,12 @@ export default function Home() {
             orientation="vertical"
             aria-label="vertical outlined button group"
           >
-            <Button sx={open ? { p: 2.3 } : { p: 1.3 }}>
+            <Button
+              sx={{
+                p: open ? 2.3 : 1.3,
+                transition: "padding 0.4s ease",
+              }}
+            >
               <Image
                 src={open ? "./Group 27571.svg" : "./Vector.svg"}
                 alt="logo"
@@ -301,7 +306,8 @@ export default function Home() {
                   mt={1}
                   display={open ? "block" : "none"}
                   sx={{
-                    transition: "all 0.4s ease",
+                    transition: "all 0.4s ease-in-out",
+                    opacity: open ? 1 : 0,
                   }}
                 >
                   {page.name}
