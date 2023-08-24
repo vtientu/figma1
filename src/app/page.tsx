@@ -420,7 +420,7 @@ export default function Home() {
           >
             Các chức năng
           </Typography>
-          <Box flexGrow={1} mx={6} maxWidth={"1800px"}>
+          <Box mx={6} maxWidth={"1800px"}>
             <Grid container spacing={2}>
               {functions.map((func, index) => (
                 <Grid
@@ -479,7 +479,14 @@ export default function Home() {
                 justifyContent={"start"}
                 width={"20%"}
               >
-                <Image src={n.banner} alt={n.title} width={300} height={184} />
+                <Image
+                  src={n.banner}
+                  alt={n.title}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
+                />
                 <Box
                   display={"flex"}
                   justifyContent={"space-between"}
@@ -558,7 +565,14 @@ export default function Home() {
                 justifyContent={"start"}
                 width={"20%"}
               >
-                <Image src={n.banner} alt={n.title} width={300} height={184} />
+                <Image
+                  src={n.banner}
+                  alt={n.title}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
+                />
                 <Box
                   display={"flex"}
                   justifyContent={"space-between"}
