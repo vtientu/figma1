@@ -10,9 +10,11 @@ import {
   Toolbar,
   Typography,
   Avatar,
+  Grid,
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   AiOutlineMenu,
   AiFillHeart,
@@ -39,13 +41,15 @@ const theme = createTheme({
 });
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
+
   const [pages, setPages] = useState([
-    {
-      name: "Trang chủ",
-      url: "/",
-      icon: "./Vector.svg",
-      active: false,
-    },
+    // {
+    //   name: "Trang chủ",
+    //   url: "/",
+    //   icon: "./Vector.svg",
+    //   active: false,
+    // },
     {
       name: "Trang chủ",
       url: "/",
@@ -54,37 +58,37 @@ export default function Home() {
     },
     {
       name: "Trò chuyện",
-      url: "/",
+      url: "/1",
       icon: "./Group 1151.svg",
       active: false,
     },
     {
       name: "Thông báo",
-      url: "/",
+      url: "/2",
       icon: "./Group 1443.svg",
       active: false,
     },
     {
       name: "Danh bạ",
-      url: "/",
+      url: "/3",
       icon: "./Group 1146.svg",
       active: false,
     },
     {
       name: "Thống kê",
-      url: "/",
+      url: "/4",
       icon: "./Group 1448.svg",
       active: false,
     },
     {
       name: "Báo cáo",
-      url: "/",
+      url: "/5",
       icon: "./Group 27569.svg",
       active: false,
     },
     {
       name: "Quản trị",
-      url: "/",
+      url: "/6",
       icon: "./Group 27570.svg",
       active: false,
     },
@@ -251,6 +255,8 @@ export default function Home() {
     },
   ];
 
+  const path = usePathname();
+
   return (
     <ThemeProvider theme={theme}>
       <Box display={"flex"} alignContent={"stretch"} minWidth={"100vh"}>
@@ -260,17 +266,36 @@ export default function Home() {
           bgcolor={theme.palette.primary.main}
           minHeight={"100vh"}
         >
-          {pages.map((page, index) => (
-            <ButtonGroup
-              key={index}
-              orientation="vertical"
-              aria-label="vertical outlined button group"
-            >
-              <Button sx={{ p: 3 }}>
+          <ButtonGroup
+            orientation="vertical"
+            aria-label="vertical outlined button group"
+          >
+            <Button sx={{ p: 3 }}>
+              <Image
+                src={open ? "./Vector.svg" : "./Group 27571.svg"}
+                alt="logo"
+                width={open ? 36 : 111}
+                height={open ? 36 : 28}
+              />
+            </Button>
+            {pages.map((page, index) => (
+              <Box
+                display={"flex"}
+                flexDirection={"column"}
+                key={index}
+                sx={{ p: 3 }}
+                alignItems={"center"}
+                justifyContent={"center"}
+                color="#fff"
+                bgcolor={
+                  path === page.url ? theme.palette.primary.dark : "inherit"
+                }
+              >
                 <Image src={page.icon} alt={page.name} width={36} height={36} />
-              </Button>
-            </ButtonGroup>
-          ))}
+                <Typography mt={1}>{open ? null : page.name}</Typography>
+              </Box>
+            ))}
+          </ButtonGroup>
         </Box>
         <Box display={"flex"} flexDirection={"column"} width={"100%"}>
           <AppBar
@@ -284,6 +309,7 @@ export default function Home() {
                 edge="start"
                 aria-label="menu"
                 sx={{ mr: 2, color: theme.palette.primary.main }}
+                onClick={() => setOpen(!open)}
               >
                 <AiOutlineMenu />
               </IconButton>
@@ -339,6 +365,9 @@ export default function Home() {
                 bgcolor: theme.palette.primary.main,
                 color: "#fff",
                 borderRadius: 18,
+                "&:hover": {
+                  color: "#fff",
+                },
               }}
             >
               Lớp 10A1
@@ -349,6 +378,9 @@ export default function Home() {
                 bgcolor: theme.palette.secondary.main,
                 color: theme.palette.text.disabled,
                 borderRadius: 18,
+                "&:hover": {
+                  color: "#fff",
+                },
               }}
             >
               Lớp 10A2
@@ -359,6 +391,9 @@ export default function Home() {
                 bgcolor: theme.palette.secondary.main,
                 color: theme.palette.text.disabled,
                 borderRadius: 18,
+                "&:hover": {
+                  color: "#fff",
+                },
               }}
             >
               Lớp 10A3
@@ -373,29 +408,36 @@ export default function Home() {
           >
             Các chức năng
           </Typography>
-          <Box display={"flex"} flexWrap={"wrap"} mx={6} maxWidth={"1800px"}>
-            {functions.map((func, index) => (
-              <Box
-                key={index}
-                display={"flex"}
-                flexDirection={"column"}
-                alignItems={"center"}
-                justifyContent={"start"}
-                width={"10%"}
-                mx={2}
-              >
-                <Image src={func.icon} alt={func.name} width={64} height={64} />
-                <Typography
-                  color={theme.palette.text.secondary}
-                  fontSize={15}
-                  fontWeight={400}
-                  textAlign={"center"}
-                  my={2}
+          <Box flexGrow={1} mx={6} maxWidth={"1800px"}>
+            <Grid container spacing={2}>
+              {functions.map((func, index) => (
+                <Grid
+                  key={index}
+                  display={"flex"}
+                  flexDirection={"column"}
+                  alignItems={"center"}
+                  justifyContent={"start"}
+                  item
+                  xs={1.5}
                 >
-                  {func.name}
-                </Typography>
-              </Box>
-            ))}
+                  <Image
+                    src={func.icon}
+                    alt={func.name}
+                    width={64}
+                    height={64}
+                  />
+                  <Typography
+                    color={theme.palette.text.secondary}
+                    fontSize={15}
+                    fontWeight={400}
+                    textAlign={"center"}
+                    my={2}
+                  >
+                    {func.name}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
 
           <Box bgcolor={theme.palette.secondary.light} pt={1}></Box>
@@ -413,6 +455,7 @@ export default function Home() {
             gap={4}
             alignItems={"stretch"}
             pb={5}
+            mx={3}
             maxWidth={"1800px"}
           >
             {news.map((n, index) => (
@@ -423,7 +466,6 @@ export default function Home() {
                 alignItems={"center"}
                 justifyContent={"start"}
                 width={"20%"}
-                mx={2}
               >
                 <Image src={n.banner} alt={n.title} width={300} height={184} />
                 <Box
@@ -490,6 +532,7 @@ export default function Home() {
           <Box
             display={"flex"}
             gap={4}
+            mx={3}
             alignItems={"stretch"}
             pb={5}
             maxWidth={"1800px"}
@@ -502,7 +545,6 @@ export default function Home() {
                 alignItems={"center"}
                 justifyContent={"start"}
                 width={"20%"}
-                mx={2}
               >
                 <Image src={n.banner} alt={n.title} width={300} height={184} />
                 <Box
