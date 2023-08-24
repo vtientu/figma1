@@ -11,6 +11,8 @@ import {
   Typography,
   Avatar,
   Grid,
+  Collapse,
+  Grow,
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -265,6 +267,8 @@ export default function Home() {
           flexDirection={"column"}
           bgcolor={theme.palette.primary.main}
           minHeight={"100vh"}
+          sx={{ transition: "all 0.3s ease-in-out" }}
+          width={open ? 150 : 80}
         >
           <ButtonGroup
             orientation="vertical"
@@ -272,10 +276,10 @@ export default function Home() {
           >
             <Button sx={{ p: 3 }}>
               <Image
-                src={open ? "./Vector.svg" : "./Group 27571.svg"}
+                src={open ? "./Group 27571.svg" : "./Vector.svg"}
                 alt="logo"
-                width={open ? 36 : 111}
-                height={open ? 36 : 28}
+                width={open ? 111 : 36}
+                height={open ? 28 : 36}
               />
             </Button>
             {pages.map((page, index) => (
@@ -292,7 +296,9 @@ export default function Home() {
                 }
               >
                 <Image src={page.icon} alt={page.name} width={36} height={36} />
-                <Typography mt={1}>{open ? null : page.name}</Typography>
+                <Typography mt={1} display={open ? "block" : "none"}>
+                  {page.name}
+                </Typography>
               </Box>
             ))}
           </ButtonGroup>
