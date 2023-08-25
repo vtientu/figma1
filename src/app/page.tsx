@@ -278,6 +278,7 @@ export default function Home() {
               sx={{
                 p: open ? 2.3 : 1.3,
                 transition: "padding 0.4s ease",
+                minHeight: 63,
               }}
             >
               <Image
@@ -295,19 +296,23 @@ export default function Home() {
                 alignItems={"center"}
                 justifyContent={"center"}
                 color="#fff"
-                height={open ? 80 : 60}
-                sx={{ transition: "all 0.4s ease-in-out", p: 2 }}
+                height={open ? 100 : 80}
+                sx={{
+                  transition: "all 0.4s ease-in-out",
+                  paddingTop: open ? 0 : 2,
+                }}
                 bgcolor={
                   path === page.url ? theme.palette.primary.dark : "inherit"
                 }
               >
                 <Image src={page.icon} alt={page.name} width={36} height={36} />
                 <Typography
-                  mt={1}
-                  display={open ? "block" : "none"}
+                  // display={open ? "block" : "none"}
                   sx={{
                     transition: "all 0.4s ease-in-out",
                     opacity: open ? 1 : 0,
+                    whiteSpace: "nowrap",
+                    marginTop: open ? 1 : 0,
                   }}
                 >
                   {page.name}
